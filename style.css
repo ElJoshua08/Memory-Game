@@ -80,16 +80,16 @@ body {
   transform-style: preserve-3d;
 }
 
-.card:hover .cardInner {
+.card.active .cardInner {
   transform: rotateY(180deg);
 }
 
 .cardFront,
 .cardBack {
   position: absolute;
-  background-color: #ffffff5d;
+  background-color: #d6cdcd5d;
   backdrop-filter: blur(5px);
-  box-shadow: 0 0 15px rgba(255, 80, 246, 0.301);
+  box-shadow: 0 0 15px rgba(173, 38, 167, 0.301);
   border-radius: 3rem;
   width: 100%;
   height: 100%;
@@ -97,6 +97,16 @@ body {
   backface-visibility: hidden;
 }
 
+.cardFront {
+  font-size: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
 .cardBack {
-   transform: rotateY(180deg);
+  color: black;
+  font-size: 7rem;
+  transform: rotateY(180deg);
 }
