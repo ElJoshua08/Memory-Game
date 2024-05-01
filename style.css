@@ -1,32 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Nunito', sans-serif;
 }
 
 html {
   font-size: 62.5%;
-  width: 100%;
-  height: 100%;
 }
 
 body {
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
-  max-width: 900px;
+  align-items: center;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #121212;
 }
 
-.mainMenu {
+main {
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 900px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-menu {
+  background-color: rgb(30, 57, 59);
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
+  border-radius: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
-  background-color: red;
-  border-radius: 1rem;
-  width: 90%;
-  height: 90%;
-  flex-grow: 1;
+  gap: 3rem;
+}
+
+.main-menu .title {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  position: absolute;
+  top: 3rem;
+}
+
+.main-menu .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.main-menu .wrapper .data {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.main-menu .wrapper .data label {
+  font-size: 2rem;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.main-menu .wrapper .data .grid-size {
+  font-size: 3rem;
+  font-weight: 800;
+  color: lime;
+}
+
+.main-menu .wrapper .menu-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.main-menu .wrapper .menu-buttons input {
+  width: 300px;
+  margin-bottom: 2rem;
+}
+
+.main-menu #startGameButton {
+  position: relative;
+  background-color: #111;
+  outline: 0;
+  border-radius: 0.5rem;
+  width: 300px;
+  padding: 0.5rem 0;
+  border: 0;
+  font-size: 3rem;
+  color: lime;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 1s cubic-bezier(.31,.02,.4,.91);
+}
+
+.main-menu #startGameButton::before {
+  left: 0;
+  top: 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: lime;
+  z-index: 1;
+  transition: all 1s cubic-bezier(.31,.02,.4,.91);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.main-menu #startGameButton:hover::before {
+  transform: scaleX(1);
+}
+
+.main-menu #startGameButton::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 3px;
+  background-color: lime;
+  transition: all 1s cubic-bezier(.31,.02,.4,.91);
+
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.main-menu #startGameButton:hover::after {
+  transform: scaleY(1);
+}
+
+.main-menu #startGameButton span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 101%;
+  height: 3px;
+  background-color: lime;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: all 1s cubic-bezier(.31,.02,.4,.91);
+}
+
+.main-menu #startGameButton:hover span::before {
+  transform: scaleX(1);
+}
+
+.main-menu #startGameButton span::after {
+  right: 0;
+  top: 0;
+  width: 3px;
+  content: '';
+  position: absolute;
+  height: 108%;
+  background-color: lime;
+  transform: scaleY(0);
+  transition: all 1s cubic-bezier(.31,.02,.4,.91);
+  transform-origin: bottom;
+}
+
+.main-menu #startGameButton:hover span::after {
+  transform: scaleY(1);
+}
+
+
+.main-menu #startGameButton:hover {
 }

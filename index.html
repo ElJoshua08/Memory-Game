@@ -5,23 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Memory Game</title>
+
   <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  <div class="mainMenu">
-    <h1 class="title">Memory Game!</h1>
-    <div class="menu">
-      <div class="data">
-        <label for="gridSizeInput">Grid Size</label>
-        <h2 id="gridSize">2 <span>x</span> 2</h2>
+  <main>
+    <div class="main-menu">
+      <h1 class="title">Memory Game</h1>
+      <div class="wrapper">
+        <div class="data">
+          <label for="gridSize">Grid Size:</label>
+          <h2 class="grid-size">2x2</h2>
+        </div>
+        <div class="menu-buttons">
+          <input type="range" name="gridSize" id="gridSize" min="2" max="40" value="22">
+  
+          <button class="start-button" id="startGameButton"><span></span><p>Start</p></button>
+        </div>
       </div>
-      <input type="range" min="2" max="9" id="gridSizeInput">
-
-      <button class="start">Start</button>
     </div>
-  </div>
-  <div class="game"></div>
+  </main>
+
 
   <script src="app.js"></script>
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
