@@ -9,71 +9,21 @@
 </head>
 
 <body>
-  <div class="mainMenu"></div>
+  <div class="mainMenu">
+    <h1 class="title">Memory Game!</h1>
+    <div class="menu">
+      <div class="data">
+        <label for="gridSizeInput">Grid Size</label>
+        <h2 id="gridSize">2 <span>x</span> 2</h2>
+      </div>
+      <input type="range" min="2" max="9" id="gridSizeInput">
 
-  <div class="game">
-    <div class="gameBoard">
-      <div class="row">
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="cardInner">
-            <div class="cardFront"><ion-icon name="help-outline"></ion-icon></div>
-            <div class="cardBack">back</div>
-          </div>
-        </div>
-      </div>
+      <button class="start">Start</button>
     </div>
   </div>
-
-  <div class="theme">
-    <ion-icon name="contrast-outline"></ion-icon>
-  </div>
+  <div class="game"></div>
 
   <script src="app.js"></script>
-
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

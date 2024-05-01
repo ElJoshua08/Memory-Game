@@ -1,0 +1,123 @@
+<mxfile host="app.diagrams.net" modified="2024-04-30T19:23:09.165Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="wki-lhOI65uFO56ISjgQ" version="24.2.0" type="device">
+  <diagram name="Página-1" id="yCHoo5fjVpk5Ec_5VBGk">
+    <mxGraphModel dx="1810" dy="843" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F5F5F5" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-2" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="260" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-1" value="Ask The user for the grid size (2x2) to (9x9)" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="60" y="65" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-4" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="450" y="90" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-3" value="In Js Iterate over the grid rows and add the cards template" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-6" target="kGwSKPdOcQewIPmpq35Q-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-6" value="When done render every card in the grid" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-19" target="kGwSKPdOcQewIPmpq35Q-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-21" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-10">
+          <mxGeometry x="-0.3044" y="2" relative="1" as="geometry">
+            <mxPoint x="-2" y="-24" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-7" value="User click on card" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="650" y="60" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-9" target="kGwSKPdOcQewIPmpq35Q-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="587.5" y="365.29" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-17" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-11">
+          <mxGeometry x="0.4433" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="637.5" y="475.29" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-16" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-15">
+          <mxGeometry x="-0.4805" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-9" value="There is already&amp;nbsp;&lt;div&gt;one card active&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;rounded=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="625" y="365.29" width="165" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-18" value="Add The .flipped Classlist to the card and add the card to a &quot;FlippedCards&quot; array" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="577.5" y="475.29" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-7" target="kGwSKPdOcQewIPmpq35Q-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="710" y="120" as="sourcePoint" />
+            <mxPoint x="710" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="194.68965517241384" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-24" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-22">
+          <mxGeometry x="-0.3174" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-19" value="Is card Flipped?&lt;div&gt;(card has the&lt;/div&gt;&lt;div&gt;&amp;nbsp;&quot;flipped&quot; class)&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="630" y="150" width="160" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-25" value="Remove the &quot;flipped&quot;&lt;div&gt;class on the card&lt;/div&gt;&lt;div&gt;and remove it from the array&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="460" y="165" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-26" value="Sum 1 to the moves counter" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="657.5" y="275.29" width="100" height="34.71" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-35" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="510.1428571428571" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-37" value="No" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-35">
+          <mxGeometry x="-0.4485" y="3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-38" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;labelBackgroundColor=none;fontColor=default;sketch=1;curveFitting=1;jiggle=2;" edge="1" parent="1" source="kGwSKPdOcQewIPmpq35Q-29">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="390" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-39" value="Yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" connectable="0" parent="kGwSKPdOcQewIPmpq35Q-38">
+          <mxGeometry x="-0.2095" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-29" value="Are card&amp;nbsp;&lt;div&gt;class the same&lt;/div&gt;" style="rhombus;whiteSpace=wrap;html=1;labelBackgroundColor=none;rounded=1;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="435" y="340" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-36" value="Remove the &quot;flipped&quot;&lt;div&gt;classlist from cards&lt;/div&gt;&lt;div&gt;and remove them from the array&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="450" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kGwSKPdOcQewIPmpq35Q-40" value="Add the &quot;correct&quot;&lt;div&gt;classlist to both cards&lt;/div&gt;&lt;div&gt;remove them from the array add some score&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;sketch=1;curveFitting=1;jiggle=2;" vertex="1" parent="1">
+          <mxGeometry x="270" y="350" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
