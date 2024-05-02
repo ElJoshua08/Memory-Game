@@ -26,6 +26,10 @@ $startGameButton.addEventListener('click', () => {
   console.log('creating game');
 });
 
+function cardClick(id) {
+  
+}
+
 function createGame() {
   let $board = document.getElementById('board');
   let $mainMenu = document.querySelector('.main-menu');
@@ -54,6 +58,10 @@ function createGame() {
 
     c.appendChild($cardFront);
     c.appendChild($cardBack);
+
+    c.addEventListener("click", (e) => {
+      cardClick(c.id)
+    })
 
     c.id = i;
   });
