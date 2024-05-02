@@ -1,7 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUpRotate {
+  0% {
+    scale: 0;
+    opacity: 0;
+  }
+
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
 :root {
   --grid-size: 2;
+  --primary: #236ec5;
+  --secondary: #aec9d7;
+  --secondary-darker: #78909c;
+  --text-primary: #646262;
+  --text-secondary: #c7bdbd;
+  --text-lighter: #dbd8d8;
 }
 
 * {
@@ -23,7 +53,8 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: #121212;
+  background-color: var(--background);
+  overflow: hidden;
 }
 
 main {
@@ -36,18 +67,17 @@ main {
 }
 
 .main-menu {
-  background-color: rgb(30, 57, 59);
-  width: calc(100% - 30px);
-  height: calc(100% - 30px);
-  border-radius: 1rem;
   display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
   gap: 3rem;
-  transform: scale(0);
+  border-radius: 1rem;
   opacity: 0;
-  transition: all .6s ease;
+  transform: scale(0);
+  transition: all 0.6s ease;
 }
 
 .main-menu.active {
@@ -61,7 +91,13 @@ main {
   letter-spacing: 2px;
   font-weight: 300;
   position: absolute;
-  top: 3rem;
+  color: var(--text-lighter);
+  top: 2rem;
+}
+
+.main-menu .title span {
+  position: relative;
+  display: inline-block;
 }
 
 .main-menu .wrapper {
@@ -76,47 +112,76 @@ main {
   width: 300px;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .main-menu .wrapper .data label {
   font-size: 2rem;
   font-weight: 600;
+  color: var(--text-primary);
   opacity: 0.8;
 }
 
 .main-menu .wrapper .data .grid-size {
   font-size: 3rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.main-menu .wrapper .data .grid-size span {
+  font-size: 3rem;
   font-weight: 800;
-  color: lime;
+  text-shadow: 0 0 5px var(--primary);
 }
 
 .main-menu .wrapper .menu-buttons {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   flex-direction: column;
 }
 
 .main-menu .wrapper .menu-buttons input {
-  width: 300px;
-  margin-bottom: 2rem;
+  -webkit-appearance: none;
+  height: 4px;
+  appearance: none;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    var(--primary) 0%,
+    var(--secondary-darker) 0%
+  );
+  outline: none;
+  transition: opacity 0.2s;
+  border-radius: 100rem;
+  margin-bottom: 3rem;
+}
+
+.main-menu .wrapper .menu-buttons input::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--primary);
+  width: 15px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .main-menu #startGameButton {
   position: relative;
-  background-color: #111;
+  background-color: var(--secondary-darker);
   outline: 0;
   border-radius: 0.5rem;
   width: 300px;
   padding: 0.5rem 0;
   border: 0;
   font-size: 3rem;
-  color: lime;
+  color: var(--primary);
   letter-spacing: 2px;
   cursor: pointer;
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(.31,.02,.4,.91);
+  transition: all 0.6s cubic-bezier(0.31, 0.02, 0.4, 0.91);
 }
 
 .main-menu #startGameButton::before {
@@ -126,9 +191,9 @@ main {
   position: absolute;
   width: 100%;
   height: 3px;
-  background-color: lime;
+  background-color: var(--primary);
   z-index: 1;
-  transition: all 0.6s cubic-bezier(.31,.02,.4,.91);
+  transition: all 0.6s cubic-bezier(0.31, 0.02, 0.4, 0.91);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -144,8 +209,8 @@ main {
   top: 0;
   height: 100%;
   width: 3px;
-  background-color: lime;
-  transition: all 0.6s cubic-bezier(.31,.02,.4,.91);
+  background-color: var(--primary);
+  transition: all 0.6s cubic-bezier(0.31, 0.02, 0.4, 0.91);
 
   transform: scaleY(0);
   transform-origin: top;
@@ -162,10 +227,10 @@ main {
   bottom: 0;
   width: 101%;
   height: 3px;
-  background-color: lime;
+  background-color: var(--primary);
   transform: scaleX(0);
   transform-origin: right;
-  transition: all 0.6s cubic-bezier(.31,.02,.4,.91);
+  transition: all 0.6s cubic-bezier(0.31, 0.02, 0.4, 0.91);
 }
 
 .main-menu #startGameButton:hover span::before {
@@ -179,9 +244,9 @@ main {
   content: '';
   position: absolute;
   height: 108%;
-  background-color: lime;
+  background-color: var(--primary);
   transform: scaleY(0);
-  transition: all 0.6s cubic-bezier(.31,.02,.4,.91);
+  transition: all 0.6s cubic-bezier(0.31, 0.02, 0.4, 0.91);
   transform-origin: bottom;
 }
 
@@ -189,8 +254,85 @@ main {
   transform: scaleY(1);
 }
 
+.main-menu .decoration {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.main-menu .decoration .card {
+  width: 170px;
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  position: relative;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+.main-menu .card .card-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  background: var(--secondary-darker) url('Images/cardFront.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.main-menu .card .card-back {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  border-radius: 1rem;
+  transform: rotateY(180deg);
+  border: 1px solid var(--primary);
+}
+
+.main-menu .card#decoration-card-1 {
+  transform: rotateZ(45deg);
+  left: 10%;
+  top: 20%;
+}
+
+.main-menu .card#decoration-card-1 .card-back { 
+  background: var(--secondary-darker) url("Images/fruits/6.png");
+    background-size: cover;
+  background-position: center;
+}
+
+.main-menu .card#decoration-card-2 {
+  transform: rotateZ(-20deg);
+  left: 70%;
+  top: 35%;
+}
+
+.main-menu .card#decoration-card-2 .card-back { 
+  background: var(--secondary-darker) url("Images/fruits/3.png");
+    background-size: cover;
+  background-position: center;
+}
+
+
+
+.main-menu .card .card-front,
+.main-menu .card .card-back {
+  backface-visibility: hidden;
+  transition: all 0.4s ease;
+}
+
+.main-menu .card:hover .card-back {
+  transform: rotateY(0deg);
+}
+
+.main-menu .card:hover .card-front {
+  transform: rotateY(180deg);
+}
+
 .game {
-  background-color: rgb(30, 57, 59);
   width: calc(100% - 30px);
   height: calc(100% - 30px);
   border-radius: 1rem;
@@ -202,7 +344,7 @@ main {
   transform: scale(0);
   display: none;
   opacity: 0;
-  transition: all .6s ease;
+  transition: all 0.6s ease;
 }
 
 .game.active {
@@ -210,7 +352,6 @@ main {
   transform: scale(1);
   opacity: 1;
 }
-
 
 .game .game-board {
   width: 100%;
@@ -237,7 +378,7 @@ main {
   aspect-ratio: 1 / 1;
   perspective: 1000px;
   position: relative;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
   cursor: pointer;
 }
 
@@ -245,13 +386,12 @@ main {
   transform: scale(1.03);
 }
 
-
 .game .row .card .card-front {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 1rem;
-  background: #111 url("Images/cardFront.png");
+  background: #111 url('Images/cardFront.png');
   background-size: cover;
   background-position: center;
 }
@@ -264,13 +404,13 @@ main {
   position: absolute;
   border-radius: 1rem;
   transform: rotateY(180deg);
-  border: 1px solid lime;
+  border: 1px solid var(--primary);
 }
 
 .game .row .card .card-front,
 .game .row .card .card-back {
   backface-visibility: hidden;
-  transition: all .4s ease;
+  transition: all 0.4s ease;
 }
 
 .game .row .card.active .card-back {
@@ -279,4 +419,16 @@ main {
 
 .game .row .card.active .card-front {
   transform: rotateY(180deg);
+}
+
+/* Estilos oscuros */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111;
+    --primary: #76ff82;
+    --secondary: #33323a;
+    --secondary-darker: #222127;
+    --text-primary: #eee;
+    --text-secondary: #5f5d6b;
+  }
 }

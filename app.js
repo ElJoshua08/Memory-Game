@@ -32,6 +32,25 @@ function cardClick(card) {
   card.classList.toggle('active');
 }
 
+function setRangeSlider($gridSizeInput) {
+  const percent =
+    ($gridSizeInput.value - $gridSizeInput.min) /
+    ($gridSizeInput.max - $gridSizeInput.min);
+
+  let completeColor = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue('--primary');
+  let notCompleteColor = getComputedStyle(
+    document.documentElement
+  ).getPropertyValue('--secondary-darker');
+  let color = `linear-gradient(to right, ${completeColor} ${
+    percent * 100
+  }%, ${notCompleteColor} ${percent * 100}%)`;
+
+  $gridSizeInput.style.background = color;
+}
+
+
 // Función para crear el juego de memoria
 function createGame() {
   let gridSize = 2;
@@ -49,6 +68,7 @@ function createGame() {
     gridSize = e.target.value;
     $gridSizeElement.innerHTML = `${gridSize} <span>x</span> ${gridSize}`;
     $root.style.setProperty('--grid-size', gridSize);
+    setRangeSlider($gridSizeInput)
   });
 
   // Inicializar el juego cuando se hace clic en el botón de iniciar juego
