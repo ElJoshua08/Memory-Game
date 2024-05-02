@@ -1,4 +1,3 @@
-// TODO: Change the grid size depending on the range input
 let gridSize = 2;
 
 let $gridSizeInput = document.getElementById('gridSizeInput');
@@ -6,11 +5,46 @@ let $gridSize = document.querySelector('.grid-size');
 let $startGameButton = document.getElementById('startGameButton');
 let $root = document.querySelector(':root');
 
+let cardContentArray = [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12
+]
+
+
 function mapValue(value, fromMin, fromMax, toMin, toMax) {
   const fromRange = fromMax - fromMin;
   const toRange = toMax - toMin;
   const scaleFactor = toRange / fromRange;
   return toMin + (value - fromMin) * scaleFactor;
+}
+
+function selectRandomElements(arr, n) {
+  if (n > arr.length) {
+    throw new Error('n must be less than or equal to the length of the array');
+  }
+
+  const result = new Array(n);
+  const arrLength = arr.length;
+  let remainingElements = arrLength;
+
+  for (let i = 0; i < n; i++) {
+    const randomIndex = Math.floor(Math.random() * remainingElements);
+    result[i] = arr[randomIndex];
+    arr.splice(randomIndex, 1);
+    remainingElements--;
+  }
+
+  return result;
 }
 
 $gridSizeInput.addEventListener('input', (e) => {
@@ -26,8 +60,8 @@ $startGameButton.addEventListener('click', () => {
   console.log('creating game');
 });
 
-function cardClick(id) {
-  
+function cardClick(card) {
+  card.classList.toggle('active');
 }
 
 function createGame() {
@@ -59,9 +93,9 @@ function createGame() {
     c.appendChild($cardFront);
     c.appendChild($cardBack);
 
-    c.addEventListener("click", (e) => {
-      cardClick(c.id)
-    })
+    c.addEventListener('click', (e) => {
+      cardClick(c);
+    });
 
     c.id = i;
   });
