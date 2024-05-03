@@ -27,9 +27,51 @@ function shuffleArray(array) {
   return array;
 }
 
+let flippedCards = [];
+
 // Función para manejar el evento de clic en una carta
 function cardClick(card) {
-  card.classList.toggle('active');
+  if (
+    !flippedCards.find((c) => {
+      return c[1] == card.id;
+    })
+  ) {
+    flippedCards.push([card.dataset.content, card.id]);
+    card.classList.add('active');
+    console.log('new card');
+  } else {
+    card.classList.remove('active');
+    flippedCards.splice(flippedCards.indexOf([card.dataset.content, card.id]));
+  }
+
+  let $board = document.getElementById('board');
+  let $cards = $board.querySelectorAll('.card');
+  let cardsArray = Array.from($cards);
+
+  let $activeCards = cardsArray.filter((cardElement) =>
+    flippedCards.forEach((c) => {
+      return c[1] == cardElement.id;
+    })
+  );
+
+  console.log($activeCards, cardsArray, flippedCards);
+
+  if (flippedCards.length === 2) {
+    console.log('Two card');
+
+    if (flippedCards.every((c) => c[0] == card.dataset.content)) {
+      console.log('Pair');
+    } else {
+      $activeCards.forEach((c) => {
+        c.style.animation = 'wrongCard 1s ease';
+        setTimeout(() => {
+          c.classList.remove('active');
+        }, 1000);
+      });
+
+      flippedCards = [];
+    }
+  }
 }
 
 function setRangeSlider($gridSizeInput) {
@@ -50,9 +92,9 @@ function setRangeSlider($gridSizeInput) {
   $gridSizeInput.style.background = color;
 }
 
-
 // Función para crear el juego de memoria
 function createGame() {
+  let creatingGame = false;
   let gridSize = 2;
   let cardContentArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   let $board = document.getElementById('board');
@@ -68,11 +110,15 @@ function createGame() {
     gridSize = e.target.value;
     $gridSizeElement.innerHTML = `${gridSize} <span>x</span> ${gridSize}`;
     $root.style.setProperty('--grid-size', gridSize);
-    setRangeSlider($gridSizeInput)
+    setRangeSlider($gridSizeInput);
   });
 
   // Inicializar el juego cuando se hace clic en el botón de iniciar juego
   $startGameButton.addEventListener('click', () => {
+    if (creatingGame) return;
+
+    creatingGame = true
+
     let cardPairs = selectRandomElements(cardContentArray, gridSize ** 2 / 2);
     cardPairs = cardPairs.concat(cardPairs);
     cardPairs = shuffleArray(cardPairs);
@@ -106,7 +152,13 @@ function createGame() {
       let $cardBack = document.createElement('div');
       $cardBack.classList.add('card-back');
 
-      $cardBack.style.background = `#111 url(Images/fruits/${c.dataset.content}.png)`;
+      let secondaryDarker = getComputedStyle(
+        document.documentElement
+      ).getPropertyValue('--seconday-darker');
+      //! COLOR SELECTION IS NOT WORKING
+      
+
+      $cardBack.style.background = `${secondaryDarker} url(Images/fruits/${c.dataset.content}.png)`;
       $cardBack.style.backgroundSize = 'cover';
       $cardBack.style.backgroundPosition = 'center';
 

@@ -24,6 +24,20 @@
   }
 }
 
+@keyframes wrongCard {
+  0%, 50% {
+    transform: translateX(3%);
+  }
+
+  25%, 75% {
+    transform: translateX(-3%);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
 :root {
   --grid-size: 2;
   --primary: #236ec5;
@@ -391,7 +405,7 @@ main {
   width: 100%;
   height: 100%;
   border-radius: 1rem;
-  background: #111 url('Images/cardFront.png');
+  background: var(--secondary-darker) url('Images/cardFront.png');
   background-size: cover;
   background-position: center;
 }

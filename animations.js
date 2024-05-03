@@ -19,7 +19,6 @@ function animateTitle() {
   let $letters = $title.querySelectorAll('span');
 
   $letters.forEach((letter, index) => {
-    console.log('animating title');
     letter.style.animation = `fadeInDown 0.5s ease-in-out ${
       index * 0.2
     }s forwards`;
