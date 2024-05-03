@@ -20,7 +20,7 @@
           <label for="gridSizeInput">Grid Size:</label>
           <h2 class="grid-size">2 <span>x</span> 2</h2>
         </div>
-        <div class="menu-buttons"> 
+        <div class="menu-buttons">
           <input type="range" name="gridSize" id="gridSizeInput" min="2" max="6" value="2" step="2">
 
           <button class="start-button" id="startGameButton"><span></span>
@@ -43,6 +43,13 @@
 
     <div class="game">
       <div class="game-board" id="board">
+      </div>
+
+      <div class="game-win" id="gameWin">
+        <div class="win-text">
+          <h1>You Win!</h1>
+          <p>You found all the matches in <span class="moves">0</span> moves.</p>
+        </div>
       </div>
     </div>
 

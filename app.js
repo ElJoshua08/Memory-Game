@@ -29,12 +29,30 @@ function shuffleArray(array) {
 
 let activeCards = [];
 
+// Funcion para checkear la victoria
+function checkWin() {
+  let $board = document.getElementById('board');
+  let $cards = $board.querySelectorAll('.card');
+  let cardsArray = Array.from($cards);
+
+  if (cardsArray.every((c) => c.classList.contains('correct'))) {
+    let $gameWin = document.getElementById('gameWin');
+
+    setTimeout(() => {
+      $gameWin.classList.add('active');
+    }, 300);
+  }
+}
+
 // Función para manejar el evento de clic en una carta
 function cardClick(card) {
+  console.log(activeCards.length)
+
   if (
     !activeCards.find((c) => {
       return c.id == card.id;
-    })
+    }) &&
+    activeCards.length <= 1
   ) {
     activeCards.push(card);
     card.classList.add('active');
@@ -43,20 +61,36 @@ function cardClick(card) {
     activeCards.splice(activeCards.indexOf(card), 1);
   }
 
-  if (activeCards.length === 2) {
+  if (activeCards.length == 2) {
     if (activeCards.every((c) => c.dataset.content == card.dataset.content)) {
+      activeCards.forEach((c) => {
+        setTimeout(() => {
+          let $cardBack = c.querySelector('.card-back');
+          $cardBack.style.background = `${getComputedStyle(
+            document.documentElement
+          ).getPropertyValue('--primary')} url(Images/fruits/${
+            c.dataset.content
+          }.png)`;
+          $cardBack.style.backgroundSize = 'cover';
+          $cardBack.style.backgroundPosition = 'center';
+
+          c.classList.add('correct');
+
+          checkWin();
+        }, 250);
+        activeCards = [];
+      });
     } else {
       activeCards.forEach((c) => {
         setTimeout(() => {
-          c.style.animation = 'wrongCard .3s linear forwards';
+          c.style.animation = 'wrongCard 250ms linear forwards';
           setTimeout(() => {
             c.classList.remove('active');
             c.style.animation = '';
-          }, 800);
+            activeCards = [];
+          }, 500);
         }, 350);
       });
-
-      activeCards = [];
     }
   }
 }
@@ -142,7 +176,6 @@ function createGame() {
       let secondaryDarker = getComputedStyle(
         document.documentElement
       ).getPropertyValue('--secondary-darker');
-
 
       $cardBack.style.background = `${secondaryDarker} url(Images/fruits/${c.dataset.content}.png)`;
       $cardBack.style.backgroundSize = 'cover';

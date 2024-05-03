@@ -25,11 +25,13 @@
 }
 
 @keyframes wrongCard {
-  0%, 50% {
+  0%,
+  50% {
     transform: translateX(3%);
   }
 
-  25%, 75% {
+  25%,
+  75% {
     transform: translateX(-3%);
   }
 
@@ -313,9 +315,9 @@ main {
   top: 20%;
 }
 
-.main-menu .card#decoration-card-1 .card-back { 
-  background: var(--secondary-darker) url("Images/fruits/6.png");
-    background-size: cover;
+.main-menu .card#decoration-card-1 .card-back {
+  background: var(--secondary-darker) url('Images/fruits/6.png');
+  background-size: cover;
   background-position: center;
 }
 
@@ -325,13 +327,11 @@ main {
   top: 35%;
 }
 
-.main-menu .card#decoration-card-2 .card-back { 
-  background: var(--secondary-darker) url("Images/fruits/3.png");
-    background-size: cover;
+.main-menu .card#decoration-card-2 .card-back {
+  background: var(--secondary-darker) url('Images/fruits/3.png');
+  background-size: cover;
   background-position: center;
 }
-
-
 
 .main-menu .card .card-front,
 .main-menu .card .card-back {
@@ -428,12 +428,39 @@ main {
   transition: all 0.4s ease;
 }
 
+.game .row .card.correct .card-back {
+  user-select: none;
+  cursor: initial;
+}
+
 .game .row .card.active .card-back {
   transform: rotateY(0deg);
 }
 
 .game .row .card.active .card-front {
   transform: rotateY(180deg);
+}
+
+.game .game-win {
+  position: absolute;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s ease;
+}
+
+.game .game-win.active {
+  width: 400px;
+  height: 300px;
+  background: var(--secondary);
+  color: var(--text-primary);
+  z-index: 999;
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* Estilos oscuros */
