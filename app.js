@@ -27,49 +27,36 @@ function shuffleArray(array) {
   return array;
 }
 
-let flippedCards = [];
+let activeCards = [];
 
 // Función para manejar el evento de clic en una carta
 function cardClick(card) {
   if (
-    !flippedCards.find((c) => {
-      return c[1] == card.id;
+    !activeCards.find((c) => {
+      return c.id == card.id;
     })
   ) {
-    flippedCards.push([card.dataset.content, card.id]);
+    activeCards.push(card);
     card.classList.add('active');
-    console.log('new card');
   } else {
     card.classList.remove('active');
-    flippedCards.splice(flippedCards.indexOf([card.dataset.content, card.id]));
+    activeCards.splice(activeCards.indexOf(card), 1);
   }
 
-  let $board = document.getElementById('board');
-  let $cards = $board.querySelectorAll('.card');
-  let cardsArray = Array.from($cards);
-
-  let $activeCards = cardsArray.filter((cardElement) =>
-    flippedCards.forEach((c) => {
-      return c[1] == cardElement.id;
-    })
-  );
-
-  console.log($activeCards, cardsArray, flippedCards);
-
-  if (flippedCards.length === 2) {
-    console.log('Two card');
-
-    if (flippedCards.every((c) => c[0] == card.dataset.content)) {
-      console.log('Pair');
+  if (activeCards.length === 2) {
+    if (activeCards.every((c) => c.dataset.content == card.dataset.content)) {
     } else {
-      $activeCards.forEach((c) => {
-        c.style.animation = 'wrongCard 1s ease';
+      activeCards.forEach((c) => {
         setTimeout(() => {
-          c.classList.remove('active');
-        }, 1000);
+          c.style.animation = 'wrongCard .3s linear forwards';
+          setTimeout(() => {
+            c.classList.remove('active');
+            c.style.animation = '';
+          }, 800);
+        }, 350);
       });
 
-      flippedCards = [];
+      activeCards = [];
     }
   }
 }
@@ -117,7 +104,7 @@ function createGame() {
   $startGameButton.addEventListener('click', () => {
     if (creatingGame) return;
 
-    creatingGame = true
+    creatingGame = true;
 
     let cardPairs = selectRandomElements(cardContentArray, gridSize ** 2 / 2);
     cardPairs = cardPairs.concat(cardPairs);
@@ -154,9 +141,8 @@ function createGame() {
 
       let secondaryDarker = getComputedStyle(
         document.documentElement
-      ).getPropertyValue('--seconday-darker');
-      //! COLOR SELECTION IS NOT WORKING
-      
+      ).getPropertyValue('--secondary-darker');
+
 
       $cardBack.style.background = `${secondaryDarker} url(Images/fruits/${c.dataset.content}.png)`;
       $cardBack.style.backgroundSize = 'cover';
