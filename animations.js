@@ -25,17 +25,17 @@ function animateTitle() {
   });
 }
 
-
 // Animate Decoration cards
 function animateDecorations() {
   let $decorationCard = document.querySelectorAll('.deco-card');
 
   $decorationCard.forEach((card, index) => {
-    card.style.animation = `fadeInUpRotate 0.7s ease-in`
-  })
-}
-  window.addEventListener('load', () => {
-    enhanceTitle();
-    animateTitle();
-    animateDecorations()
+    card.style.animation = `fadeInUpRotate 0.7s ease-in`;
   });
+}
+
+window.addEventListener('load', () => {
+  enhanceTitle();
+  animateTitle();
+  animateDecorations();
+});

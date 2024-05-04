@@ -1,3 +1,17 @@
+// Elementos
+let creatingGame = false;
+// Columns And rows
+let grid = [2, 2];
+let cardContentArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let $board = document.getElementById('board');
+let $mainMenu = document.querySelector('.main-menu');
+let $game = document.querySelector('.game');
+let $root = document.querySelector(':root');
+let styles = getComputedStyle(document.documentElement);
+
+// Variables
+let activeCards = [];
+
 // Función para seleccionar n elementos aleatorios de un array
 function selectRandomElements(arr, n) {
   if (n > arr.length) {
@@ -27,8 +41,6 @@ function shuffleArray(array) {
   return array;
 }
 
-let activeCards = [];
-
 // Funcion para checkear la victoria
 function checkWin() {
   let $board = document.getElementById('board');
@@ -46,8 +58,6 @@ function checkWin() {
 
 // Función para manejar el evento de clic en una carta
 function cardClick(card) {
-  console.log(activeCards.length)
-
   if (
     !activeCards.find((c) => {
       return c.id == card.id;
@@ -66,11 +76,9 @@ function cardClick(card) {
       activeCards.forEach((c) => {
         setTimeout(() => {
           let $cardBack = c.querySelector('.card-back');
-          $cardBack.style.background = `${getComputedStyle(
-            document.documentElement
-          ).getPropertyValue('--primary')} url(Images/fruits/${
-            c.dataset.content
-          }.png)`;
+          $cardBack.style.background = `${styles.getPropertyValue(
+            '--primary'
+          )} url(Images/fruits/${c.dataset.content}.png)`;
           $cardBack.style.backgroundSize = 'cover';
           $cardBack.style.backgroundPosition = 'center';
 
@@ -95,111 +103,138 @@ function cardClick(card) {
   }
 }
 
-function setRangeSlider($gridSizeInput) {
-  const percent =
-    ($gridSizeInput.value - $gridSizeInput.min) /
-    ($gridSizeInput.max - $gridSizeInput.min);
+let $restartGameButton = document.getElementById('restart');
+let $startGameButton = document.getElementById('start');
 
-  let completeColor = getComputedStyle(
-    document.documentElement
-  ).getPropertyValue('--primary');
-  let notCompleteColor = getComputedStyle(
-    document.documentElement
-  ).getPropertyValue('--secondary-darker');
-  let color = `linear-gradient(to right, ${completeColor} ${
-    percent * 100
-  }%, ${notCompleteColor} ${percent * 100}%)`;
+$startGameButton.addEventListener('click', () => startGame());
+$restartGameButton.addEventListener('click', () => restartGame());
 
-  $gridSizeInput.style.background = color;
-}
+function startGame() {
+  if (creatingGame) return;
+  creatingGame = true;
 
-// Función para crear el juego de memoria
-function createGame() {
-  let creatingGame = false;
-  let gridSize = 2;
-  let cardContentArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  let $board = document.getElementById('board');
-  let $mainMenu = document.querySelector('.main-menu');
-  let $game = document.querySelector('.game');
-  let $gridSizeInput = document.getElementById('gridSizeInput');
-  let $gridSizeElement = document.querySelector('.grid-size');
-  let $root = document.querySelector(':root');
-  let $startGameButton = document.getElementById('startGameButton');
+  // Get the number of cards, screen size, and user-defined number of rows
+  let numCards = cardContentArray.length;
+  let screenWidth = window.innerWidth;
+  let screenHeight = window.innerHeight;
+  let numRows = grid[1];
+  let gridSize = grid[0] * grid[1]
 
-  // Actualizar el tamaño del tablero cuando cambia el valor del input
-  $gridSizeInput.addEventListener('input', (e) => {
-    gridSize = e.target.value;
-    $gridSizeElement.innerHTML = `${gridSize} <span>x</span> ${gridSize}`;
-    $root.style.setProperty('--grid-size', gridSize);
-    setRangeSlider($gridSizeInput);
-  });
+  // Calculate the size of the cards
+  let cardSize = calculateCardSize(
+    numCards,
+    screenWidth,
+    screenHeight,
+    numRows
+  );
 
-  // Inicializar el juego cuando se hace clic en el botón de iniciar juego
-  $startGameButton.addEventListener('click', () => {
-    if (creatingGame) return;
+  // Set the card size as a CSS variable
+  $root.style.setProperty('--card-size', cardSize + 'px');
 
-    creatingGame = true;
+  let cardPairs = selectRandomElements(cardContentArray, gridSize / 2);
+  cardPairs = cardPairs.concat(cardPairs);
+  cardPairs = shuffleArray(cardPairs);
 
-    let cardPairs = selectRandomElements(cardContentArray, gridSize ** 2 / 2);
-    cardPairs = cardPairs.concat(cardPairs);
-    cardPairs = shuffleArray(cardPairs);
+  let pairIndex = 0;
 
-    let pairIndex = 0;
+  for (let row = 0; row < grid[0]; row++) {
+    let $row = document.createElement('div');
+    $row.classList.add('row');
 
-    for (let row = 0; row < gridSize; row++) {
-      let $row = document.createElement('div');
-      $row.classList.add('row');
-      for (let col = 0; col < gridSize; col++) {
-        let $card = document.createElement('div');
-        $card.classList.add('card');
+    for (let col = 0; col < grid[1]; col++) {
+      let $card = document.createElement('div');
+      $card.classList.add('card');
 
-        let content = cardPairs[pairIndex];
-        $card.dataset.content = content;
-        $card.classList.add(`content-${content}`);
+      let content = cardPairs[pairIndex];
+      $card.dataset.content = content;
+      $card.classList.add(`content-${content}`);
 
-        pairIndex++;
+      pairIndex++;
 
-        $row.appendChild($card);
-      }
-
-      $board.appendChild($row);
+      $row.appendChild($card);
     }
 
-    let $cards = $board.querySelectorAll('.card');
+    $board.appendChild($row);
+  }
 
-    $cards.forEach((c, i) => {
-      let $cardFront = document.createElement('div');
-      $cardFront.classList.add('card-front');
-      let $cardBack = document.createElement('div');
-      $cardBack.classList.add('card-back');
+  let $cards = $board.querySelectorAll('.card');
 
-      let secondaryDarker = getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--secondary-darker');
+  $cards.forEach((c, i) => {
+    let $cardFront = document.createElement('div');
+    $cardFront.classList.add('card-front');
+    let $cardBack = document.createElement('div');
+    $cardBack.classList.add('card-back');
 
-      $cardBack.style.background = `${secondaryDarker} url(Images/fruits/${c.dataset.content}.png)`;
-      $cardBack.style.backgroundSize = 'cover';
-      $cardBack.style.backgroundPosition = 'center';
+    let secondaryDarker = styles.getPropertyValue('--secondary-darker');
 
-      c.appendChild($cardFront);
-      c.appendChild($cardBack);
+    $cardBack.style.background = `${secondaryDarker} url(Images/fruits/${c.dataset.content}.png)`;
+    $cardBack.style.backgroundSize = 'cover';
+    $cardBack.style.backgroundPosition = 'center';
 
-      c.addEventListener('click', (e) => {
-        cardClick(c);
-      });
+    c.appendChild($cardFront);
+    c.appendChild($cardBack);
 
-      c.id = i;
+    c.addEventListener('click', (e) => {
+      cardClick(c);
     });
 
-    setTimeout(() => {
-      $mainMenu.classList.remove('active');
-      setTimeout(() => {
-        $mainMenu.style.display = 'none';
-        $game.classList.add('active');
-      }, 300);
-    }, 300);
+    c.id = i;
   });
+
+  setTimeout(() => {
+    $mainMenu.classList.remove('active');
+    setTimeout(() => {
+      $mainMenu.style.display = 'none';
+      $game.classList.add('active');
+    }, 300);
+  }, 300);
 }
 
-// Iniciar el juego al cargar la página
-createGame();
+function restartGame() {
+  creatingGame = false;
+  startGame();
+}
+
+// Calculate the size of the cards based on the number of cards and screen size
+function calculateCardSize(numCards, screenWidth, screenHeight, numRows) {
+  let cardSize;
+  let numColumns;
+
+  if (screenWidth < 500) {
+    cardSize = screenHeight / (numCards + 1);
+    numColumns = Math.ceil(numCards / numRows);
+  } else {
+    // Usamos el número de filas proporcionado por el usuario solo si el ancho de la pantalla es mayor o igual a 500px
+    numColumns = Math.ceil(numCards / numRows);
+    let availableSpace = screenWidth * 0.8; // Usamos el 80% del ancho de la pantalla para la distribución de las cartas
+    cardSize = availableSpace / numColumns;
+  }
+
+  // Ajustamos el tamaño de las cartas para que ocupe todo el espacio disponible en la pantalla
+  let spacePerCard =
+    screenWidth < 500
+      ? screenHeight / (numRows + 1)
+      : screenWidth / (numColumns + 1);
+  cardSize = Math.min(cardSize, spacePerCard);
+
+  return cardSize;
+}
+
+window.addEventListener('resize', () => {
+  // Get the number of cards, screen size, and user-defined number of rows
+  let numCards = cardContentArray.length;
+  let screenWidth = window.innerWidth;
+  let screenHeight = window.innerHeight;
+  let numRows = grid[1]
+
+  // Calculate the size of the cards
+  let cardSize = calculateCardSize(
+    numCards,
+    screenWidth,
+    screenHeight,
+    numRows
+  );
+
+  // Set the card size as a CSS variable
+  $root.style.setProperty('--card-size', cardSize + 'px');
+});

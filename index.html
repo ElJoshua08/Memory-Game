@@ -21,9 +21,13 @@
           <h2 class="grid-size">2 <span>x</span> 2</h2>
         </div>
         <div class="menu-buttons">
-          <input type="range" name="gridSize" id="gridSizeInput" min="2" max="6" value="2" step="2">
+          <div class="game-difficulty">
 
-          <button class="start-button" id="startGameButton"><span></span>
+          </div>
+
+
+          <button class="action-button start-button" id="start">
+            <span></span>
             <p>Start</p>
           </button>
         </div>
@@ -47,10 +51,35 @@
 
       <div class="game-win" id="gameWin">
         <div class="win-text">
-          <h1>You Win!</h1>
-          <p>You found all the matches in <span class="moves">0</span> moves.</p>
+          <h1>You Have Won!</h1>
+        </div>
+        <div class="win-buttons">
+          <button class="action-button stats-button" id="stats">
+            <span></span>
+            <p>Show Stats</p>
+          </button>
+
+          <button class="action-button restart-button" id="restart">
+            <span></span>
+            <p>Restart</p>
+          </button>
+
+          <button class="action-button main-menu-button" id="main-menu">
+            <span></span>
+            <p>Main Menu</p>
+          </button>
         </div>
       </div>
+      <!-- <div class="stats">
+        <div class="stat">
+          <h3 class="stat-title">Moves Made </h3>
+          <p><span>15</span>Moves</p>
+        </div>
+        <div class="stat">
+          <h3 class="stat-title">Time taken </h3>
+          <p><span>23</span> Seconds</p>
+        </div>
+      </div> -->
     </div>
 
   </main>
