@@ -390,11 +390,12 @@ main {
 
 .game .row .card {
   width: var(--card-size);
-  aspect-ratio: 1 / 1;
+  height: var(--card-size);
   perspective: 1000px;
   position: relative;
   transition: all 0.4s ease;
   cursor: pointer;
+
 }
 
 .game .row .card:hover {

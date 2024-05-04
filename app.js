@@ -1,8 +1,9 @@
 // Elementos
 let creatingGame = false;
 // Columns And rows
-let grid = [2, 2];
-let cardContentArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+let grid = [4, 6];
+let initialGrid = [...grid];
+let cardContentArray = Array.from({ length: 20 }, (_, index) => index + 1);
 let $board = document.getElementById('board');
 let $mainMenu = document.querySelector('.main-menu');
 let $game = document.querySelector('.game');
@@ -113,20 +114,10 @@ function startGame() {
   if (creatingGame) return;
   creatingGame = true;
 
-  // Get the number of cards, screen size, and user-defined number of rows
-  let numCards = cardContentArray.length;
-  let screenWidth = window.innerWidth;
-  let screenHeight = window.innerHeight;
-  let numRows = grid[1];
-  let gridSize = grid[0] * grid[1]
+  let gridSize = grid[0] * grid[1];
 
   // Calculate the size of the cards
-  let cardSize = calculateCardSize(
-    numCards,
-    screenWidth,
-    screenHeight,
-    numRows
-  );
+  let cardSize = calculateCardSize(grid);
 
   // Set the card size as a CSS variable
   $root.style.setProperty('--card-size', cardSize + 'px');
@@ -190,50 +181,38 @@ function startGame() {
   }, 300);
 }
 
-function restartGame() {
-  creatingGame = false;
-  startGame();
-}
-
-// Calculate the size of the cards based on the number of cards and screen size
-function calculateCardSize(numCards, screenWidth, screenHeight, numRows) {
+function calculateCardSize(grid) {
+  // Obtenemos la altura de la pantalla
+  let width = window.innerWidth;
+  let aviableWidth = width * 0.9;
+  let height = window.innerHeight;
+  let aviableHeight = height * 0.9;
   let cardSize;
-  let numColumns;
 
-  if (screenWidth < 500) {
-    cardSize = screenHeight / (numCards + 1);
-    numColumns = Math.ceil(numCards / numRows);
+  // Calculamos el número de filas y columnas basado en la cuadrícula proporcionada
+  let numRows = grid[0];
+  let numColumns = grid[1];
+
+  if (aviableWidth > aviableHeight) {
+    cardSize = aviableWidth / numColumns;
+    if (cardSize * numRows > height) {
+      cardSize = aviableHeight / numRows;
+    }
   } else {
-    // Usamos el número de filas proporcionado por el usuario solo si el ancho de la pantalla es mayor o igual a 500px
-    numColumns = Math.ceil(numCards / numRows);
-    let availableSpace = screenWidth * 0.8; // Usamos el 80% del ancho de la pantalla para la distribución de las cartas
-    cardSize = availableSpace / numColumns;
+    cardSize = aviableHeight / numRows;
+    if (cardSize * numColumns > width) {
+      cardSize = aviableWidth / numColumns;
+    }
   }
 
-  // Ajustamos el tamaño de las cartas para que ocupe todo el espacio disponible en la pantalla
-  let spacePerCard =
-    screenWidth < 500
-      ? screenHeight / (numRows + 1)
-      : screenWidth / (numColumns + 1);
-  cardSize = Math.min(cardSize, spacePerCard);
+  console.log(cardSize);
 
   return cardSize;
 }
 
 window.addEventListener('resize', () => {
-  // Get the number of cards, screen size, and user-defined number of rows
-  let numCards = cardContentArray.length;
-  let screenWidth = window.innerWidth;
-  let screenHeight = window.innerHeight;
-  let numRows = grid[1]
-
   // Calculate the size of the cards
-  let cardSize = calculateCardSize(
-    numCards,
-    screenWidth,
-    screenHeight,
-    numRows
-  );
+  let cardSize = calculateCardSize(grid);
 
   // Set the card size as a CSS variable
   $root.style.setProperty('--card-size', cardSize + 'px');
