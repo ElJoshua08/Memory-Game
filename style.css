@@ -123,65 +123,11 @@ main {
   flex-direction: column;
 }
 
-.main-menu .wrapper .data {
-  display: flex;
-  width: 300px;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-}
-
-.main-menu .wrapper .data label {
-  font-size: 2rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  opacity: 0.8;
-}
-
-.main-menu .wrapper .data .grid-size {
-  font-size: 3rem;
-  font-weight: 600;
-  color: var(--primary);
-}
-
-.main-menu .wrapper .data .grid-size span {
-  font-size: 3rem;
-  font-weight: 800;
-  text-shadow: 0 0 5px var(--primary);
-}
-
 .main-menu .wrapper .menu-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-}
-
-.main-menu .wrapper .menu-buttons input {
-  -webkit-appearance: none;
-  height: 4px;
-  appearance: none;
-  width: 100%;
-  background: linear-gradient(
-    to right,
-    var(--primary) 0%,
-    var(--secondary-darker) 0%
-  );
-  outline: none;
-  transition: opacity 0.2s;
-  border-radius: 100rem;
-  margin-bottom: 3rem;
-}
-
-.main-menu .wrapper .menu-buttons input::-webkit-slider-thumb {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: var(--primary);
-  width: 15px;
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 .action-button {
@@ -336,7 +282,7 @@ main {
 .main-menu .card .card-front,
 .main-menu .card .card-back {
   backface-visibility: hidden;
-  transition: all 0.4s ease;
+  transition: all 3s ease;
 }
 
 .main-menu .card:hover .card-back {
@@ -344,7 +290,7 @@ main {
 }
 
 .main-menu .card:hover .card-front {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .game {
@@ -439,7 +385,7 @@ main {
 }
 
 .game .row .card.active .card-front {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 }
 
 .game .game-win {
