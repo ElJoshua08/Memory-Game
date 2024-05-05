@@ -1,7 +1,7 @@
 // Elementos
 let creatingGame = false;
 // Columns And rows
-let grid = [4, 6];
+let grid = [2, 2];
 let initialGrid = [...grid];
 let cardContentArray = Array.from({ length: 20 }, (_, index) => index + 1);
 let $board = document.getElementById('board');
@@ -59,6 +59,7 @@ function checkWin() {
 
 // Función para manejar el evento de clic en una carta
 function cardClick(card) {
+  if (card.classList.contains('correct')) return;
   if (
     !activeCards.find((c) => {
       return c.id == card.id;
