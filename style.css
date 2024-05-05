@@ -57,6 +57,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Nunito', sans-serif;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -402,7 +403,7 @@ main {
 .game .game-win.active .wrapper {
   transform: scale(1);
   opacity: 1;
-} 
+}
 
 /* ! Esta mierda no va, en algun momento la arreglare */
 .game-win.active ~ .game-board {
@@ -446,7 +447,7 @@ main {
     --secondary-darker: #0e0e0e;
     --text-primary: #eee;
     --text-secondary: #5f5d6b;
-  --text-lighter: #ddd;
+    --text-lighter: #ddd;
   }
 }
 
