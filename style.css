@@ -102,8 +102,7 @@ main {
   width: 100%;
   height: 100%;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-around;
   gap: 3rem;
   border-radius: 1rem;
   opacity: 0;
@@ -131,18 +130,63 @@ main {
   display: inline-block;
 }
 
-.main-menu .wrapper {
+.main-menu #difficulty {
+  background-color: var(--secondary-darker);
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-direction: column;
+  padding-top: 1rem;
+  width: 350px;
+  height: 300px;
 }
 
-.main-menu .wrapper .menu-buttons {
+.main-menu #difficulty h2 {
+  color: var(--text-lighter);
+  font-size: 3rem;
+}
+
+.main-menu #difficulty .options {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.main-menu #difficulty .options .option {
+  position: relative;
+  color: var(--text-secondary);
+  font-size: 2.3rem;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+.main-menu #difficulty .options .option:hover { 
+  color: var(--primary);
+}
+
+.main-menu #difficulty .options .option.selected {
+  color: var(--primary);
+}
+
+.main-menu #difficulty .options .option::before {
+  width: 100%;
+  height: 2px;
+  border-radius: 1rem;
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  background-color: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all .3s ease;
+}
+
+.main-menu #difficulty .options .option.selected::before {
+  transform: scaleX(1);
 }
 
 .action-button {
@@ -229,45 +273,6 @@ main {
 
 .action-button:hover span::after {
   transform: scaleY(1);
-}
-
-.main-menu .decoration {
-  position: absolute;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
-
-.main-menu .decoration .card {
-  width: 10vw;
-  aspect-ratio: 1 / 1;
-  perspective: 1000px;
-  transform-style: preserve-3d;
-  position: relative;
-  transition: all 0.4s ease;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-
-.main-menu .card .card-front {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 1rem;
-  background: var(--secondary-darker) url('Images/cardFront.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.main-menu .card .card-back {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  position: absolute;
-  border-radius: 1rem;
-  transform: rotateY(180deg);
-  border: 1px solid var(--primary);
 }
 
 .game {
@@ -448,6 +453,21 @@ main {
     --text-primary: #eee;
     --text-secondary: #5f5d6b;
     --text-lighter: #ddd;
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .main-menu {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .main-menu #difficulty {
+    width: 80vw;
+  }
+
+  .action-button {
+    width: 80vw;
   }
 }
 

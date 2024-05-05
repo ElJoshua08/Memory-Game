@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Enjoy this incredible memory game searching for fruit pairs and training your mind!">
+  <meta name="description"
+    content="Enjoy this incredible memory game searching for fruit pairs and training your mind!">
   <meta name="author" content="El Joshua">
   <meta name="keywords" content="game, memory game, mind games">
   <meta name="language" content="en">
@@ -22,35 +23,19 @@
   <main>
     <div class="main-menu active">
       <h1 class="title">Memory</h1>
-      <div class="wrapper">
-        <div class="menu-buttons">
-          <h2>Game difficulty</h2>
-          <div class="game-difficulty">
-            <button class="difficulty easy" id="easy">
-              <span></span>
-              <p>Easy</p>
-            </button>
-            <button class="difficulty medium" id="medium">
-              <span></span>
-              <p>Medium</p>
-            </button>
-            <button class="difficulty hard" id="hard">
-              <span></span>
-              <p>Hard</p>
-            </button>
-            <button class="difficulty extreme" id="extreme">
-              <span></span>
-              <p>Extreme</p>
-            </button>
-          </div>
-
-
-          <button class="action-button start-button" id="start">
-            <span></span>
-            <p>Start</p>
-          </button>
+      <div id="difficulty">
+        <h2>Game difficulty</h2>
+        <div class="options">
+          <div class="option selected" data-rows="2" data-columns="4">Easy</div>
+          <div class="option" data-rows="3" data-columns="4">Medium</div>
+          <div class="option" data-rows="4" data-columns="5">Hard</div>
+          <div class="option" data-rows="6" data-columns="6">Extreme</div>
         </div>
       </div>
+      <button class="action-button start-button" id="start-button">
+        <span></span>
+        <p>Start</p>
+      </button>
     </div>
 
     <div class="game">
@@ -63,17 +48,17 @@
             <h1>You Have Won!</h1>
           </div>
           <div class="win-buttons">
-            <button class="action-button stats-button" id="stats">
+            <button class="action-button stats-button" id="stats-button">
               <span></span>
               <p>Show Stats</p>
             </button>
-  
-            <button class="action-button restart-button" id="restart">
+
+            <button class="action-button restart-button" id="restart-button">
               <span></span>
               <p>Restart</p>
             </button>
-  
-            <button class="action-button main-menu-button" id="main-menu">
+
+            <button class="action-button main-menu-button" id="main-menu-button">
               <span></span>
               <p>Main Menu</p>
             </button>

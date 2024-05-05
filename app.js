@@ -1,7 +1,7 @@
 // Elementos
 let creatingGame = false;
 // Columns And rows
-let grid = [2, 2];
+let grid = [2, 4];
 let initialGrid = [...grid];
 let cardContentArray = Array.from({ length: 20 }, (_, index) => index + 1);
 let $board = document.getElementById('board');
@@ -9,6 +9,18 @@ let $mainMenu = document.querySelector('.main-menu');
 let $game = document.querySelector('.game');
 let $root = document.querySelector(':root');
 let styles = getComputedStyle(document.documentElement);
+let $difficulty = document.getElementById('difficulty');
+let $difficulties = Array.from($difficulty.querySelectorAll('.option'));
+
+$difficulties.forEach((difficulty, index) => {
+  difficulty.addEventListener('click', (e) => {
+    $difficulties.map((d) => d.classList.remove('selected'));
+    e.target.classList.add('selected');
+    grid[0] = e.target.dataset?.rows;
+    grid[1] = e.target.dataset?.columns;
+    console.log(grid);
+  });
+});
 
 // Variables
 let activeCards = [];
@@ -105,11 +117,18 @@ function cardClick(card) {
   }
 }
 
-let $restartGameButton = document.getElementById('restart');
-let $startGameButton = document.getElementById('start');
+let $startGameButton = document.getElementById('start-button');
+let $restartGameButton = document.getElementById('restart-button');
+let $mainMenuButton = document.getElementById('main-menu-button');
 
 $startGameButton.addEventListener('click', () => startGame());
 $restartGameButton.addEventListener('click', () => restartGame());
+$mainMenuButton.addEventListener('click', () => {
+  $mainMenu.classList.add('active');
+  $mainMenu.style.display = 'flex';
+  $game.classList.remove('active');
+  creatingGame = false
+});
 
 function startGame() {
   if (creatingGame) return;
@@ -210,6 +229,8 @@ function calculateCardSize(grid) {
 
   return cardSize;
 }
+
+function restartGame() {}
 
 window.addEventListener('resize', () => {
   // Calculate the size of the cards
