@@ -69,7 +69,7 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: var(--background);
+  background: #000;
   overflow: hidden;
 }
 
@@ -77,6 +77,17 @@ main {
   width: 100vw;
   height: 100vh;
   /* max-width: 900px; */
+  background: #eb5757; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to top,
+    var(--background-start),
+    var(--background-end)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    var(--background-start),
+    var(--background-end)
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,9 +114,9 @@ main {
 }
 
 .main-menu .title {
-  font-size: 2rem;
+  font-size: 3rem;
   letter-spacing: 2px;
-  font-weight: 300;
+  font-weight: 500;
   position: absolute;
   color: var(--text-lighter);
   top: 2rem;
@@ -224,7 +235,7 @@ main {
 }
 
 .main-menu .decoration .card {
-  width: 170px;
+  width: 10vw;
   aspect-ratio: 1 / 1;
   perspective: 1000px;
   transform-style: preserve-3d;
@@ -253,44 +264,6 @@ main {
   border-radius: 1rem;
   transform: rotateY(180deg);
   border: 1px solid var(--primary);
-}
-
-.main-menu .card#decoration-card-1 {
-  transform: rotateZ(45deg);
-  left: 10%;
-  top: 20%;
-}
-
-.main-menu .card#decoration-card-1 .card-back {
-  background: var(--secondary-darker) url('Images/fruits/6.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.main-menu .card#decoration-card-2 {
-  transform: rotateZ(-20deg);
-  left: 70%;
-  top: 35%;
-}
-
-.main-menu .card#decoration-card-2 .card-back {
-  background: var(--secondary-darker) url('Images/fruits/3.png');
-  background-size: cover;
-  background-position: center;
-}
-
-.main-menu .card .card-front,
-.main-menu .card .card-back {
-  backface-visibility: hidden;
-  transition: all 3s ease;
-}
-
-.main-menu .card:hover .card-back {
-  transform: rotateY(0deg);
-}
-
-.main-menu .card:hover .card-front {
-  transform: rotateY(-180deg);
 }
 
 .game {
@@ -341,7 +314,6 @@ main {
   position: relative;
   transition: all 0.4s ease;
   cursor: pointer;
-
 }
 
 .game .row .card:hover {
@@ -440,14 +412,15 @@ main {
   position: absolute;
   right: -7rem;
   width: 200px;
-    background-color: var(--secondary-darker);
+  background-color: var(--secondary-darker);
 }
 
 /* Estilos oscuros */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #111;
-    --primary: #76ff82;
+    --background-start: #000;
+    --background-end: #eb5757;
+    --primary: #5757eb;
     --secondary: #33323a;
     --secondary-darker: #222127;
     --text-primary: #eee;
