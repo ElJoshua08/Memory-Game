@@ -42,12 +42,14 @@
 
 :root {
   --card-size: 2;
-  --primary: #236ec5;
-  --secondary: #aec9d7;
-  --secondary-darker: #78909c;
+  --primary: #001c3a;
+  --secondary: #fff;
+  --secondary-darker: #3082d3;
   --text-primary: #646262;
   --text-secondary: #c7bdbd;
-  --text-lighter: #dbd8d8;
+  --text-lighter: #1f0000;
+  --background-start: #43cea2;
+  --background-end: #185a9d;
 }
 
 * {
@@ -444,6 +446,7 @@ main {
     --secondary-darker: #0e0e0e;
     --text-primary: #eee;
     --text-secondary: #5f5d6b;
+  --text-lighter: #ddd;
   }
 }
 
