@@ -15,6 +15,8 @@ function enhanceTitle() {
 }
 
 function animateTitle() {
+  enhanceTitle()
+
   let $title = document.querySelector('.title');
   let $letters = $title.querySelectorAll('span');
 
@@ -25,17 +27,6 @@ function animateTitle() {
   });
 }
 
-// Animate Decoration cards
-function animateDecorations() {
-  let $decorationCard = document.querySelectorAll('.deco-card');
-
-  $decorationCard.forEach((card, index) => {
-    card.style.animation = `fadeInUpRotate 0.7s ease-in`;
-  });
-}
-
 window.addEventListener('load', () => {
-  enhanceTitle();
   animateTitle();
-  animateDecorations();
 });

@@ -124,10 +124,17 @@ let $mainMenuButton = document.getElementById('main-menu-button');
 $startGameButton.addEventListener('click', () => startGame());
 $restartGameButton.addEventListener('click', () => restartGame());
 $mainMenuButton.addEventListener('click', () => {
-  $mainMenu.classList.add('active');
-  $mainMenu.style.display = 'flex';
+  let $gameWin = document.getElementById('gameWin');
   $game.classList.remove('active');
-  creatingGame = false
+  
+  setTimeout(() => {
+    $mainMenu.style.display = 'flex';
+    $mainMenu.classList.add('active');
+    setTimeout(() => {
+      $gameWin.classList.remove('active');
+    }, 400);
+  }, 200);
+  creatingGame = false;
 });
 
 function startGame() {
@@ -219,12 +226,11 @@ function calculateCardSize(grid) {
       cardSize = aviableHeight / numRows;
     }
   } else {
-    cardSize = aviableHeight / numRows;
-    if (cardSize * numColumns > width) {
-      cardSize = aviableWidth / numColumns;
+    cardSize = aviableHeight / numColumns;
+    if (cardSize > aviableWidth) {
+      cardSize = (aviableWidth * 0.9) / numColumns;
     }
   }
-
   console.log(cardSize);
 
   return cardSize;
