@@ -18,7 +18,6 @@ $difficulties.forEach((difficulty, index) => {
     e.target.classList.add('selected');
     grid[0] = e.target.dataset?.rows;
     grid[1] = e.target.dataset?.columns;
-    console.log(grid);
   });
 });
 
@@ -125,8 +124,9 @@ $startGameButton.addEventListener('click', () => startGame());
 $restartGameButton.addEventListener('click', () => restartGame());
 $mainMenuButton.addEventListener('click', () => {
   let $gameWin = document.getElementById('gameWin');
+  $board.innerHTML = '';
   $game.classList.remove('active');
-  
+
   setTimeout(() => {
     $mainMenu.style.display = 'flex';
     $mainMenu.classList.add('active');
@@ -222,21 +222,34 @@ function calculateCardSize(grid) {
 
   if (aviableWidth > aviableHeight) {
     cardSize = aviableWidth / numColumns;
-    if (cardSize * numRows > height) {
+    console.log(cardSize * numRows, aviableHeight);
+    if (cardSize * numRows * 0.9 > aviableHeight) {
+      console.log('Exceded Height');
       cardSize = aviableHeight / numRows;
     }
   } else {
     cardSize = aviableHeight / numColumns;
-    if (cardSize > aviableWidth) {
-      cardSize = (aviableWidth * 0.9) / numColumns;
+    console.log("numrows,", numRows, "numcolumns, ", numColumns)
+    console.log(cardSize * numRows, aviableWidth)
+    if (cardSize * numRows * 0.9 > aviableWidth) {
+      console.log('TotalCards bigger than column');
+      cardSize = aviableWidth / numRows;
     }
+    console.log(cardSize, numColumns, aviableHeight);
   }
-  console.log(cardSize);
 
   return cardSize;
 }
 
-function restartGame() {}
+function restartGame() {
+  let $gameWin = document.getElementById('gameWin');
+
+  creatingGame = false;
+  $board.innerHTML = '';
+  $gameWin.classList.remove('active');
+
+  startGame();
+}
 
 window.addEventListener('resize', () => {
   // Calculate the size of the cards
