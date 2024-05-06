@@ -43,7 +43,7 @@
 :root {
   --card-size: 2;
   --primary: #001c3a;
-  --secondary: #fff;
+  --secondary: #5535e0;
   --secondary-darker: #3082d3;
   --text-primary: #646262;
   --text-secondary: #c7bdbd;
@@ -160,10 +160,10 @@ main {
   color: var(--text-secondary);
   font-size: 2.3rem;
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
-.main-menu #difficulty .options .option:hover { 
+.main-menu #difficulty .options .option:hover {
   color: var(--primary);
 }
 
@@ -182,7 +182,7 @@ main {
   background-color: var(--primary);
   transform: scaleX(0);
   transform-origin: left;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .main-menu #difficulty .options .option.selected::before {
@@ -401,19 +401,12 @@ main {
 
 .game .game-win.active {
   z-index: 2;
-  backdrop-filter: blur(70px);
+  backdrop-filter: blur(5px);
 }
 
 .game .game-win.active .wrapper {
   transform: scale(1);
   opacity: 1;
-}
-
-/* ! Esta mierda no va, en algun momento la arreglare */
-.game-win.active ~ .game-board {
-  filter: blur(
-    100px
-  ); /* Puedes ajustar el valor de desenfoque según tus preferencias */
 }
 
 .game .game-win .win-text {
@@ -431,6 +424,7 @@ main {
 }
 
 .game .game-win .win-buttons .action-button {
+  background-color: #fff;
   width: 200px;
 }
 
@@ -452,6 +446,14 @@ main {
     --text-primary: #eee;
     --text-secondary: #5f5d6b;
     --text-lighter: #ddd;
+  }
+
+  .game .game-win.active  {
+    backdrop-filter: blur(70px);
+  }
+
+  .action-button {
+    background-color: var(--secondary-darker) !important;
   }
 }
 
